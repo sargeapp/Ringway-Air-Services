@@ -1,0 +1,14 @@
+{
+  "brand_callout": "Virtual Operations Desk • MSFS 2024 Native",
+  "hub_badges": [
+    "ICAO: RAS",
+    "Callsign: RINGWAY",
+    "Hubs: EGNH / EGCC / LEPA"
+  ],
+  "nav_links": [
+    { "label": "Dispatch Desk", "url": "#dispatch" },
+    { "label": "Active Fleet", "url": "#fleet" },
+    { "label": "Scenery & Bases", "url": "#scenery" },
+    { "label": "Telemetry", "url": "#telemetry" }
+  ]
+}

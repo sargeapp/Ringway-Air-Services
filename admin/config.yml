@@ -1,46 +1,90 @@
 backend:
   name: github
-  repo: your-github-username/ringway-air-services # Replace with your GitHub repo
+  repo: sargeapp/Ringway-Air-Services
   branch: main
   base_url: https://flying.sarge-smiffy.com
+  auth_endpoint: api/auth
 
-media_folder: "img/fleet" # Where uploaded images get stored in the project
-public_folder: "/img/fleet"
+media_folder: "img/uploads"
+public_folder: "/img/uploads"
 
 collections:
-  # Pillar 1: Paint Bay & Fleet
+  # 1. Global Navigation & Site Settings
+  - name: "settings"
+    label: "Site Settings & Menus"
+    files:
+      - file: "data/settings.json"
+        label: "Header Navigation & Global Brand"
+        name: "site_settings"
+        format: "json"
+        fields:
+          - { label: "Brand Callout", name: "brand_callout", widget: "string", default: "Virtual Operations Desk • MSFS 2024 Native" }
+          - { label: "Active Hub Badges", name: "hub_badges", widget: "list", default: ["ICAO: RAS", "Callsign: RINGWAY", "Hubs: EGNH / EGCC / LEPA"] }
+          - label: "Navigation Links"
+            name: "nav_links"
+            widget: "list"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL / Anchor (e.g. /#fleet or /pages/about.html)", name: "url", widget: "string" }
+
+  # 2. Dynamic Page Builder (Create New Pages Anytime)
+  - name: "pages"
+    label: "Custom Pages"
+    folder: "data/pages"
+    create: true
+    format: "json"
+    slug: "{{fields.slug}}"
+    fields:
+      - { label: "Page Title", name: "title", widget: "string" }
+      - { label: "URL Slug (e.g. charter-pricing, live-tracker)", name: "slug", widget: "string" }
+      - { label: "Hero Subtitle", name: "subtitle", widget: "string" }
+      - { label: "Header Banner Image", name: "banner", widget: "image", required: false }
+      - { label: "Page Content (Markdown/HTML Support)", name: "body", widget: "markdown" }
+
+  # 3. Pillar 1: MSFS 2024 Paintkits & Aircraft Fleet
   - name: "fleet"
-    label: "Aircraft Fleet (Paint Bay)"
+    label: "Fleet & Liveries (Paint Bay)"
     folder: "data/fleet"
     create: true
+    format: "json"
+    slug: "{{fields.reg}}"
     fields:
-      - { label: "Aircraft Model", name: "model", widget: "string" }
-      - { label: "Registration (Tail)", name: "reg", widget: "string" }
-      - { label: "ICAO Type Code", name: "type", widget: "string" }
-      - { label: "Operational Role / Division", name: "role", widget: "string" }
-      - { label: "Livery Preview Image", name: "image", widget: "image" }
-      - { label: "Livery ZIP Download URL", name: "download_url", widget: "string" }
+      - { label: "Aircraft Model", name: "model", widget: "string", default: "Boeing 737-BBJ" }
+      - { label: "Registration (Tail)", name: "reg", widget: "string", default: "G-RASM" }
+      - { label: "ICAO Type Code (e.g. B738, PC24, TBM9)", name: "type", widget: "string", default: "B738" }
+      - { label: "Operational Role / Division", name: "role", widget: "string", default: "VIP Executive & Long-Haul" }
+      - { label: "Range Spec", name: "range", widget: "string", default: "5,700 nm" }
+      - { label: "Performance Spec", name: "perf", widget: "string", default: "Mach 0.78" }
+      - { label: "PBR Standard", name: "pbr_tier", widget: "select", options: ["MSFS 2024 Native 8K COMP", "MSFS 2024 Native 4K COMP", "Legacy 4K"], default: "MSFS 2024 Native 8K COMP" }
+      - { label: "Livery Render / Preview Image", name: "image", widget: "image" }
+      - { label: "SimLivery / ZIP Direct Download Link", name: "download_url", widget: "string", required: false }
 
-  # Pillar 2: Scenery Radar
+  # 4. Pillar 2: MSFS 2024 Custom Scenery & Bases
   - name: "scenery"
     label: "Scenery & Airport Hubs"
     folder: "data/scenery"
     create: true
+    format: "json"
+    slug: "{{fields.icao}}"
     fields:
-      - { label: "Airport Name", name: "title", widget: "string" }
-      - { label: "ICAO Code", name: "icao", widget: "string" }
-      - { label: "Status (e.g. In Dev / Released)", name: "status", widget: "string" }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Scenery Package ZIP URL", name: "download_url", widget: "string" }
+      - { label: "Airport / Base Name", name: "title", widget: "string", default: "Blackpool Airport" }
+      - { label: "ICAO Code", name: "icao", widget: "string", default: "EGNH" }
+      - { label: "Project Status", name: "status", widget: "select", options: ["Active Hub", "In Development (Blender/DevMode)", "Planned"], default: "In Development (Blender/DevMode)" }
+      - { label: "Facility Type", name: "facility_type", widget: "string", default: "Primary Operations Base & Executive FBO" }
+      - { label: "Technical Feature Summary", name: "description", widget: "text" }
+      - { label: "Scenery Showcase Screenshot", name: "image", widget: "image", required: false }
+      - { label: "Scenery Package ZIP URL", name: "download_url", widget: "string", required: false }
 
-  # Telemetry & Pedigree
-  - name: "stats"
-    label: "Telemetry & Flight Hours"
-    files:
-      - file: "data/stats.json"
-        label: "Flight Hours Counter"
-        name: "stats_data"
-        fields:
-          - { label: "Total Logged Hours", name: "total_hours", widget: "number", default: 3500 }
-          - { label: "Jet Transport Hours", name: "jet_hours", widget: "number", default: 1800 }
-          - { label: "Turboprop & STOL Hours", name: "turboprop_hours", widget: "number", default: 1200 }
+  # 5. Articles, Mission Logs & Dev Notes
+  - name: "articles"
+    label: "Flight Logs & Dev Notes"
+    folder: "data/articles"
+    create: true
+    format: "json"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Article Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Category", name: "category", widget: "select", options: ["Mission Report", "DevMode Progress", "Fleet Acceptance", "Operations"] }
+      - { label: "Featured Image", name: "image", widget: "image", required: false }
+      - { label: "Content", name: "body", widget: "markdown" }
