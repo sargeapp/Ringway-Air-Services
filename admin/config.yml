@@ -88,3 +88,18 @@ collections:
       - { label: "Category", name: "category", widget: "select", options: ["Mission Report", "DevMode Progress", "Fleet Acceptance", "Operations"] }
       - { label: "Featured Image", name: "image", widget: "image", required: false }
       - { label: "Content", name: "body", widget: "markdown" }
+      
+  # Site Status & Maintenance Switch
+  - name: "system"
+    label: "System Status & Maintenance"
+    files:
+      - file: "data/status.json"
+        label: "Maintenance Mode Switch"
+        name: "site_status"
+        format: "json"
+        fields:
+          - { label: "Maintenance Mode Active", name: "maintenance_active", widget: "boolean", default: true }
+          - { label: "Maintenance Headline", name: "headline", widget: "string", default: "Operations Portal Under Maintenance" }
+          - { label: "Maintenance Subtitle", name: "subtitle", widget: "string", default: "Virtual Operations Desk • Systems Offline" }
+          - { label: "Status Banner Notice", name: "notice", widget: "text", default: "Upgrading core infrastructure for MSFS 2024 native architecture, compiling 8K PBR paintkits, and calibrating custom airfield scenery." }
+          - { label: "Estimated Return to Service", name: "rts_estimate", widget: "string", default: "August 2026 / MSFS 2024 Deployment" }
