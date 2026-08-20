@@ -1,5 +1,5 @@
 {
-  "maintenance_active": true,
+  "maintenance_active": false,
   "headline": "Operations Portal Under Maintenance",
   "subtitle": "Virtual Operations Desk • Systems Offline",
   "notice": "Upgrading core infrastructure for MSFS 2024 native architecture, compiling 8K PBR paintkits, and calibrating custom airfield scenery.",
