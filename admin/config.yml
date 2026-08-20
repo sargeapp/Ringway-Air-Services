@@ -2,6 +2,7 @@ backend:
   name: github
   repo: your-github-username/ringway-air-services # Replace with your GitHub repo
   branch: main
+  base_url: https://flying.sarge-smiffy.com
 
 media_folder: "img/fleet" # Where uploaded images get stored in the project
 public_folder: "/img/fleet"
