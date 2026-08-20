@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ringway Air Services | Virtual Operations &amp; Dispatch Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Masthead -->
+  <header>
+    <div class="container nav-bar">
+      <div class="brand">
+        <h1>RINGWAY <span>AIR SERVICES</span></h1>
+        <p>Virtual Operations Desk &bull; MSFS 2024 Native</p>
+      </div>
+      <div class="nav-badges">
+        <span class="badge">ICAO: RAS</span>
+        <span class="badge">Callsign: RINGWAY</span>
+        <span class="badge badge-accent">Hubs: EGNH / EGCC</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    
+    <!-- Hero / B2B Contractor Statement -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h2>Specialized Aviation Logistics &amp; Executive Charter</h2>
+        <p>Ringway Air Services provides on-demand airframe ferry flights, post-maintenance storage recovery, and VIP private charters across the UK, Europe, and Atlantic corridors.</p>
+      </div>
+    </section>
+
+    <!-- Pillar 3: Automated Dispatch Desk -->
+    <section class="terminal-container">
+      <div class="terminal-header">
+        <div>
+          <h3>📡 Operations Dispatch Terminal</h3>
+          <p>Real-time contract board &bull; Procedural SimBrief OFP integration</p>
+        </div>
+        <button id="refresh-btn" class="btn-primary" onclick="generateContracts()">🔄 Refresh Feed</button>
+      </div>
+      <div id="contract-grid" class="contract-grid">
+        <!-- Injected via dispatch.js -->
+      </div>
+    </section>
+
+    <!-- Pillar 1: Fleet Showcase & Paint Bay -->
+    <section class="section-block">
+      <h3 class="section-title">The Active Fleet <span>(MSFS 2024 PBR Standard)</span></h3>
+      <div class="fleet-grid">
+        
+        <div class="fleet-card">
+          <div class="fleet-header">
+            <h4>Boeing 737-BBJ</h4>
+            <span class="fleet-reg">G-RASM</span>
+          </div>
+          <p class="fleet-role">Division: VIP Executive &amp; Long-Haul</p>
+          <div class="fleet-specs">
+            <span>Range: 5,700 nm</span>
+            <span>Speed: Mach 0.78</span>
+          </div>
+          <div class="download-badge">Custom 8K PBR Livery Included</div>
+        </div>
+
+        <div class="fleet-card">
+          <div class="fleet-header">
+            <h4>Pilatus PC-24</h4>
+            <span class="fleet-reg">G-RASU</span>
+          </div>
+          <p class="fleet-role">Division: Jet Charter &amp; Unpaved STOL</p>
+          <div class="fleet-specs">
+            <span>Range: 2,000 nm</span>
+            <span>Field: 2,930 ft</span>
+          </div>
+          <div class="download-badge">Custom 4K PBR Livery Included</div>
+        </div>
+
+        <div class="fleet-card">
+          <div class="fleet-header">
+            <h4>Daher TBM 930</h4>
+            <span class="fleet-reg">G-RAST</span>
+          </div>
+          <p class="fleet-role">Division: Regional Fast Feeder &amp; Ferry</p>
+          <div class="fleet-specs">
+            <span>Range: 1,730 nm</span>
+            <span>Speed: 330 kts</span>
+          </div>
+          <div class="download-badge">Custom 4K PBR Livery Included</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Pillar 2: Scenery Radar -->
+    <section class="section-block">
+      <h3 class="section-title">Operational Bases <span>(Custom 3D SDK Infrastructure)</span></h3>
+      <div class="scenery-grid">
+        <div class="scenery-card">
+          <h4>Blackpool Airport (EGNH)</h4>
+          <p class="scenery-type">Primary Operations Base &amp; Executive FBO</p>
+          <p>Custom Blender glTF 2.0 hangars, VIP pilot lounge, and accurate vector apron parking.</p>
+        </div>
+        <div class="scenery-card">
+          <h4>Manchester Ringway (EGCC)</h4>
+          <p class="scenery-type">Heavy Maintenance &amp; Freight Staging</p>
+          <p>Maintenance staging bays, high-capacity cargo ramps, and corporate acceptance staging.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Flight Telemetry & Pedigree -->
+    <section class="stats-panel">
+      <div class="stat-item">
+        <div class="stat-num">3,500<span>+</span></div>
+        <div class="stat-label">Lifetime Flight Hours</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">1,800<span>+</span></div>
+        <div class="stat-label">Jet &amp; Heavy Transport</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">1,200<span>+</span></div>
+        <div class="stat-label">Turboprop &amp; STOL</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100<span>%</span></div>
+        <div class="stat-label">MSFS 2024 Native</div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Ringway Air Services &copy; 2026 &bull; Creative Simulation Department &bull; flying.sarge-smiffy.com</p>
+    </div>
+  </footer>
+
+  <script src="js/dispatch.js"></script>
+</body>
+</html>

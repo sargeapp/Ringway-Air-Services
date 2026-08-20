@@ -1,0 +1,45 @@
+backend:
+  name: github
+  repo: your-github-username/ringway-air-services # Replace with your GitHub repo
+  branch: main
+
+media_folder: "img/fleet" # Where uploaded images get stored in the project
+public_folder: "/img/fleet"
+
+collections:
+  # Pillar 1: Paint Bay & Fleet
+  - name: "fleet"
+    label: "Aircraft Fleet (Paint Bay)"
+    folder: "data/fleet"
+    create: true
+    fields:
+      - { label: "Aircraft Model", name: "model", widget: "string" }
+      - { label: "Registration (Tail)", name: "reg", widget: "string" }
+      - { label: "ICAO Type Code", name: "type", widget: "string" }
+      - { label: "Operational Role / Division", name: "role", widget: "string" }
+      - { label: "Livery Preview Image", name: "image", widget: "image" }
+      - { label: "Livery ZIP Download URL", name: "download_url", widget: "string" }
+
+  # Pillar 2: Scenery Radar
+  - name: "scenery"
+    label: "Scenery & Airport Hubs"
+    folder: "data/scenery"
+    create: true
+    fields:
+      - { label: "Airport Name", name: "title", widget: "string" }
+      - { label: "ICAO Code", name: "icao", widget: "string" }
+      - { label: "Status (e.g. In Dev / Released)", name: "status", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Scenery Package ZIP URL", name: "download_url", widget: "string" }
+
+  # Telemetry & Pedigree
+  - name: "stats"
+    label: "Telemetry & Flight Hours"
+    files:
+      - file: "data/stats.json"
+        label: "Flight Hours Counter"
+        name: "stats_data"
+        fields:
+          - { label: "Total Logged Hours", name: "total_hours", widget: "number", default: 3500 }
+          - { label: "Jet Transport Hours", name: "jet_hours", widget: "number", default: 1800 }
+          - { label: "Turboprop & STOL Hours", name: "turboprop_hours", widget: "number", default: 1200 }
