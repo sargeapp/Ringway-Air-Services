@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: your-github-username/ringway-air-services # Change to your user/repo
+  repo: sargeapp/Ringway-Air-Services # Change to your user/repo
   branch: main
   base_url: https://your-oauth-worker.yourname.workers.dev # Or your OAuth proxy URL
 
